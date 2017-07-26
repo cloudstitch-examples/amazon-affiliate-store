@@ -1,0 +1,43 @@
+/* Typography */
+
+@function font-size($step) {
+  @return nth($type-scale, $step);
+}
+
+@function fs($step) {
+  @return font-size($step);
+}
+
+/* Sizing + Spacing */
+
+@function sizing($step) {
+  @return nth($sizing-scale, $step);
+}
+
+@function dimension($arg) {
+  @if $arg < 1 { // fraction
+    @return $arg * 100%;
+  } @else { // step
+    @return sizing($arg);
+  }
+}
+
+@function w($step) {
+  @return dimension($step);
+}
+
+@function h($step) {
+  @return dimension($step);
+}
+
+@function spacing($step) {
+  @return nth($spacing-scale, $step);
+}
+
+@function m($step) {
+  @return spacing($step);
+}
+
+@function p($step) {
+  @return spacing($step);
+}

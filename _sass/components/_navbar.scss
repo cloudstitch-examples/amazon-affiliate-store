@@ -1,0 +1,28 @@
+.Navbar {
+  @include flex;
+  justify-content: space-between;
+  align-items: center;
+  height: h(3);
+  padding: 0 p(5);
+  margin-bottom: m(4);
+  background-color: $nav-color;
+}
+
+.Navbar__brand {
+  margin-bottom: 0;
+  font-size: fs(3);
+}
+
+.Navbar__menu {
+  @include flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.Navbar__item:not(:first-child) {
+  margin-left: m(4);
+  > a {
+    @include dim;
+  }
+}

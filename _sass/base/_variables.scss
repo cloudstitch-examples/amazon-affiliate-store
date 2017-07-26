@@ -1,0 +1,68 @@
+/* Cards + Grid */
+
+$card-type: "color"; // basic, color
+$grid-cols: 12;
+$num-cols: 4;
+
+/* Typography */
+
+$system-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto",
+              "Helvetica Neue", Helvetica, Arial, sans-serif,
+              "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$type-scale: 1rem, 1.25rem, 1.5rem, 2.25rem, 3rem;
+
+$fw-normal: 400;
+$fw-bold: 600;
+
+$lh-title: 1.25;
+$lh-copy: 1.5;
+
+/* Sizing + Spacing */
+
+$sizing-scale: 1rem, 2rem, 4rem, 8rem, 16rem;
+$spacing-scale: .25rem, .5rem, 1rem, 2rem, 4rem, 8rem, 16rem;
+
+/* Colors */
+
+$white: rgb(255,255,255);
+$near-white: rgb(244,244,244);
+$light-gray: rgb(153,153,153);
+$mid-gray: rgb(85,85,85);
+$dark-gray: rgb(51,51,51);
+$black: rgb(0,0,0);
+
+$green: rgb(25,169,116);
+$red: rgb(255,65,54);
+$blue: rgb(53,126,221);
+$yellow: rgb(255,215,0);
+
+$bg-color: $near-white;
+$primary-text-color: $dark-gray;
+$secondary-text-color: $light-gray;
+$inverted-text-color: $white;
+$nav-color: $white;
+$brand-color: $green;
+
+$card-color: $white;
+$card-colors: $green, $red, $blue, $yellow;
+
+/* Shadows + Opacity */
+
+$shadow-color: $mid-gray;
+$shadow-opacity: .075;
+$shadow-opacity-hover: .15;
+
+$opacity-hover: .5;
+$opacity-overlay: .75;
+
+/* Borders */
+
+$border-color: rgba($black, .1);
+
+$br-rounded: .5rem;
+$br-circle: 100%;
+
+/* Transitions */
+
+$transition-duration: 150ms;

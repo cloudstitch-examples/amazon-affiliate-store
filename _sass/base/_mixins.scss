@@ -1,0 +1,68 @@
+@mixin flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-auto {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+@mixin flex-none {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+
+@mixin flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap
+}
+
+@mixin flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@mixin grid($gutter: 3) {
+  @include flex;
+  @include flex-wrap;
+  margin: -(m($gutter));
+}
+
+@mixin col($cols: 0, $gutter: 3) {
+  @if $cols == 0 {
+    @include flex-auto;
+  } @else {
+    @include flex-none;
+    width: w($cols / $grid-cols);
+  }
+  padding: p($gutter);
+}
+
+@mixin dim {
+  transition: opacity $transition-duration ease-in;
+  
+  &:focus,
+  &:hover {
+    opacity: $opacity-hover;
+  }
+}
+
+@mixin shadow {
+  box-shadow: 0 p(1) p(2) rgba($shadow-color, $shadow-opacity);
+  transition: box-shadow $transition-duration ease-in,
+              transform $transition-duration ease-in;
+
+  &:focus,
+  &:hover {
+    box-shadow: p(1) p(2) p(3) rgba($shadow-color, $shadow-opacity-hover);
+    transform: translateY(-(p(1)));
+  }
+}
