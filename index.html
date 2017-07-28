@@ -3,19 +3,19 @@ layout: default
 ---
 
 <section class="Gallery">
-  {% for product in site.data.storedata.Products %}
+  {% for product in site.data.Products.RedditScrape %}
     <div class="Card sc-product-item">
       <input class="sc-cart-item-qty" name="product_quantity" value="1" type="hidden" />
-      <input name="product_price" value="{{product.PriceDollars}}" type="hidden" />
-      <input name="product_id" value="{{product.ProductId}}" type="hidden" />
-      <input name="product_asin" value="{{product.ProductAsin}}" type="hidden" />
+      <input name="product_price" value="{{product.AmazonPrice}}" type="hidden" />
+      <input name="product_id" value="{{forloop.index}}" type="hidden" />
+      <input name="product_asin" value="{{product.ASIN}}" type="hidden" />
 
       <a class="Card__content sc-add-to-cart" href="#">
-        <div class="Card__image" name="product_image" style="background-image: url('{{product.Image}}');"></div>
+        <div class="Card__image" name="product_image" style="background-image: url('{{product.AmazonImage}}');"></div>
         <div class="Card__info">
-          <h3 class="Card__title" data-name="product_name">{{product.Name | truncate: 100}}</h3>
+          <h3 class="Card__title" data-name="product_name">{{product.AmazonTitle | truncate: 100}}</h3>
           <h3 class="Card__detail">
-            ${{product.PriceDollars}}
+            {{product.AmazonPrice}}
             <span class="Card__label">Add to cart</span>
             <span class="Card__added"><img src="https://icon.now.sh/check/24/ffffff"></span>
           </h3>
@@ -30,68 +30,3 @@ layout: default
     <div id="smartcart"></div>
   </form>
 </aside>
-
-<!-- <section class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Products
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        {% for product in site.data.storedata.Products %}
-                          <div class="col-md-4 col-sm-6">
-                              <div class="sc-product-item thumbnail">
-                                  <img data-name="product_image" src="{{product.Image}}" alt="...">
-                                  <div class="caption">
-                                      <h4 data-name="product_name">{{product.Name}}</h4>
-                                      <p data-name="product_desc">{{product.Description}}</p>
-                                      <hr class="line">                                      
-                                      <div>
-                                          <div class="form-group">
-                                              <label>Size: </label>
-                                              <select name="product_size" class="form-control input-sm">
-                                                  <option>S</option>
-                                                  <option>M</option>
-                                                  <option>L</option>
-                                              </select>
-                                          </div>
-                                          <div class="form-group">
-                                              <label>Color: </label><br />
-                                              <label class="radio-inline">
-                                                  <input type="radio" name="product_color" value="red"> red
-                                              </label>
-                                              <label class="radio-inline">
-                                                  <input type="radio" name="product_color" value="blue"> blue
-                                              </label>
-                                              <label class="radio-inline">
-                                                  <input type="radio" name="product_color" value="green"> green
-                                              </label>
-                                          </div>
-                                          <div class="form-group2">
-                                              <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
-                                          </div>
-                                          <strong class="price pull-left">${{product.PriceDollars}}</strong>                                          
-                                          <input name="product_price" value="{{product.PriceDollars}}" type="hidden" />
-                                          <input name="product_id" value="{{product.ProductId}}" type="hidden" />
-                                          <input name="product_asin" value="{{product.ProductAsin}}" type="hidden" />
-                                          <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
-                                      </div>
-                                      <div class="clearfix"></div>
-                                  </div>
-                              </div>
-                          </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>            
-        </div>        
-        <aside class="col-md-4">
-            <form id="purchaseForm" action="{{site.data.cloudstitch.api_endpoint}}/Orders" method="POST"> 
-                <div id="smartcart"></div>
-            </form>
-            
-        </aside>
-    </div>
-</section> -->
