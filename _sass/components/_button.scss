@@ -1,0 +1,20 @@
+.Button {
+  padding: p(2) p(3);
+  border: 0;
+  border-radius: $br-rounded;
+  cursor: pointer;
+}
+
+.Button:not(.Button--link) {
+  font-weight: $fw-semibold;
+  color: $inverted-text-color;
+  background-color: $brand-color;
+  @include shadow;
+  @include darken($brand-color);
+}
+
+.Button--link {
+  color: $brand-color;
+  background-color: $nav-color;
+  @include dim;
+}

@@ -4,6 +4,12 @@
   display: flex;
 }
 
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 @mixin flex-auto {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -30,20 +36,19 @@
   flex-direction: column;
 }
 
-@mixin grid($gutter: 3) {
+@mixin grid($gutter: 4) {
   @include flex;
-  @include flex-wrap;
-  margin: -(m($gutter));
+  margin: -(m($gutter - 1));
 }
 
-@mixin col($cols: 0, $gutter: 3) {
+@mixin col($cols: 0, $gutter: 4) {
   @if $cols == 0 {
     @include flex-auto;
   } @else {
-    @include flex-none;
-    width: w($cols / $grid-cols);
+    -ms-flex: 0 0 $cols / $grid-cols * 100%;
+    flex: 0 0 $cols / $grid-cols * 100%;
   }
-  padding: p($gutter);
+  padding: p($gutter - 1);
 }
 
 @mixin dim {
@@ -55,13 +60,27 @@
   }
 }
 
-@mixin shadow {
-  box-shadow: 0 p(1) p(2) rgba($shadow-color, $shadow-opacity);
-  transition: box-shadow $transition-duration ease-in,
-              transform $transition-duration ease-in;
+@mixin darken($color) {
+  transition: background-color $transition-duration ease-in;
 
   &:focus,
   &:hover {
+    background-color: darken($color, 20%);
+  }
+}
+
+@mixin shadow {
+  box-shadow: 0 p(1) p(2) rgba($shadow-color, $shadow-opacity);
+}
+
+@mixin card-hover($color) {
+  transition: background-color $transition-duration ease-in,
+              box-shadow $transition-duration ease-in,
+              transform $transition-duration ease-in;
+  
+  &:focus,
+  &:hover {
+    background-color: darken($color, 20%);
     box-shadow: p(1) p(2) p(3) rgba($shadow-color, $shadow-opacity-hover);
     transform: translateY(-(p(1)));
   }

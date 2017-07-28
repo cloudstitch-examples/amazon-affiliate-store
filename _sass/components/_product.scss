@@ -1,0 +1,36 @@
+.Product {
+  position: relative;
+  @include flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: m(3);
+  }
+}
+
+.Product__image {
+  @include flex;
+  justify-content: center;
+  width: w(3);
+  height: h(3);
+
+  > img {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.Product__name {
+  flex: 1;
+  padding-left: p(3);
+  padding-right: p(6);
+  margin-bottom: 0;
+}
+
+.Product__remove {
+  margin-left: m(4);
+  cursor: pointer;
+  @include dim;
+}

@@ -17,32 +17,36 @@ h6 {
 }
 
 h1 {
-  font-size: fs(5);
+  font-size: fs(6);
 }
 
 h2 {
-  font-size: fs(4);
+  font-size: fs(5);
 }
 
 h3 {
-  font-size: fs(3);
+  font-size: fs(4);
 }
 
 h4 {
-  font-size: fs(2);
+  font-size: fs(3);
 }
 
 h5 {
-  font-size: fs(1);
+  font-size: fs(2);
 }
 
 p,
 li {
   margin-top: 0;
-  font-size: fs(1);
+  font-size: fs(2);
   line-height: $lh-copy;
 }
 
 a {
   text-decoration: none;
+}
+
+button, input {
+  font-family: $system-font;
 }

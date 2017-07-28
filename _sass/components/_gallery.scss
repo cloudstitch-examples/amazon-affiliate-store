@@ -1,3 +1,5 @@
 .Gallery {
   @include grid;
+  @include flex-wrap;
+  padding-top: p(4);
 }

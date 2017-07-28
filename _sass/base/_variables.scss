@@ -10,10 +10,12 @@ $system-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto"
               "Helvetica Neue", Helvetica, Arial, sans-serif,
               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$type-scale: 1rem, 1.25rem, 1.5rem, 2.25rem, 3rem;
+$type-scale: .875rem, 1rem, 1.25rem, 1.5rem, 2.25rem, 3rem;
 
 $fw-normal: 400;
+$fw-semibold: 500;
 $fw-bold: 600;
+$fw-bolder: 700;
 
 $lh-title: 1.25;
 $lh-copy: 1.5;
@@ -32,10 +34,14 @@ $mid-gray: rgb(85,85,85);
 $dark-gray: rgb(51,51,51);
 $black: rgb(0,0,0);
 
-$green: rgb(25,169,116);
 $red: rgb(255,65,54);
+$orange: rgb(255,99,0);
+$yellow: rgb(255,183,0);
+$green: rgb(25,169,116);
+$teal: rgb(57,204,204);
 $blue: rgb(53,126,221);
-$yellow: rgb(255,215,0);
+$purple: rgb(164,99,242);
+$pink: rgb(255,65,180);
 
 $bg-color: $near-white;
 $primary-text-color: $dark-gray;
@@ -45,7 +51,9 @@ $nav-color: $white;
 $brand-color: $green;
 
 $card-color: $white;
-$card-colors: $green, $red, $blue, $yellow;
+$card-colors: $green, $purple, $teal, $pink, $red, $blue, $yellow, $orange;
+$modal-color: $black;
+$cart-color: $white;
 
 /* Shadows + Opacity */
 

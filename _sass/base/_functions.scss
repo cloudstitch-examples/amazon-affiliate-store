@@ -14,12 +14,8 @@
   @return nth($sizing-scale, $step);
 }
 
-@function dimension($arg) {
-  @if $arg < 1 { // fraction
-    @return $arg * 100%;
-  } @else { // step
-    @return sizing($arg);
-  }
+@function dimension($step) {
+  @return sizing($step);
 }
 
 @function w($step) {

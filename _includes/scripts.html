@@ -1,0 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>
+<script src="{{ '/assets/js/jquery-smartcart/jquery.smartCart.js' | relative_url }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#smartcart').smartCart({
+      submitSettings: {
+        submitType: 'awslist'
+      }
+    });
+
+    $('#toggleCart').click(function(e) {
+      e.preventDefault();
+      toggleCart();
+    });
+
+    $('.Cart').click(function(e) {
+      if (e.target === this) {
+        toggleCart();
+      }
+    });
+
+    function toggleCart() {
+      $('body').toggleClass('u-noscroll');
+      $('#toggleCart').blur().children().each(function() {
+        $(this).toggleClass('u-hidden');
+      })
+      $('.Cart').toggleClass('Cart--open');
+    }
+  });
+</script>

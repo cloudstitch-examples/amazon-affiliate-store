@@ -2,41 +2,96 @@
 layout: default
 ---
 
-<div class="Gallery">
-  <div class="Card">
-    <div class="Card__content">
-      <div class="Card__image" style="background-image: url('https://images-na.ssl-images-amazon.com/images/I/51mKMrC49vL.jpg');"></div>
-      <div class="Card__info">
-        <h2 class="Card__title">Star Wars TIE Fighter Gas Grill</h2>
-        <h3 class="Card__price">$299.99</h3>
-      </div>
+<section class="Gallery">
+  {% for product in site.data.storedata.Products %}
+    <div class="Card sc-product-item">
+      <input class="sc-cart-item-qty" name="product_quantity" value="1" type="hidden" />
+      <input name="product_price" value="{{product.PriceDollars}}" type="hidden" />
+      <input name="product_id" value="{{product.ProductId}}" type="hidden" />
+      <input name="product_asin" value="{{product.ProductAsin}}" type="hidden" />
+
+      <a class="Card__content sc-add-to-cart" href="#">
+        <div class="Card__image" name="product_image" style="background-image: url('{{product.Image}}');"></div>
+        <div class="Card__info">
+          <h3 class="Card__title" data-name="product_name">{{product.Name | truncate: 100 }}</h3>
+          <h3 class="Card__detail">
+            ${{product.PriceDollars}}
+            <span class="Card__label">Add to cart</span>
+            <span class="Card__added"><img src="https://icon.now.sh/check/24/ffffff"></span>
+          </h3>
+        </div>
+      </a>
     </div>
-  </div>
-  <div class="Card">
-    <div class="Card__content">
-      <div class="Card__image" style="background-image: url('https://images-na.ssl-images-amazon.com/images/I/61wdbAODxZL.jpg');"></div>
-      <div class="Card__info">
-        <h2 class="Card__title">CRACKS! Finding Art Underfoot</h2>
-        <h3 class="Card__price">$38.99</h3>
-      </div>
+  {% endfor %}
+</section>
+
+<aside class="Cart">
+  <form class="Cart__form" id="purchaseForm" action="{{site.data.cloudstitch.api_endpoint}}/Orders" method="POST"> 
+    <div id="smartcart"></div>
+  </form>
+</aside>
+
+<!-- <section class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Products
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        {% for product in site.data.storedata.Products %}
+                          <div class="col-md-4 col-sm-6">
+                              <div class="sc-product-item thumbnail">
+                                  <img data-name="product_image" src="{{product.Image}}" alt="...">
+                                  <div class="caption">
+                                      <h4 data-name="product_name">{{product.Name}}</h4>
+                                      <p data-name="product_desc">{{product.Description}}</p>
+                                      <hr class="line">                                      
+                                      <div>
+                                          <div class="form-group">
+                                              <label>Size: </label>
+                                              <select name="product_size" class="form-control input-sm">
+                                                  <option>S</option>
+                                                  <option>M</option>
+                                                  <option>L</option>
+                                              </select>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Color: </label><br />
+                                              <label class="radio-inline">
+                                                  <input type="radio" name="product_color" value="red"> red
+                                              </label>
+                                              <label class="radio-inline">
+                                                  <input type="radio" name="product_color" value="blue"> blue
+                                              </label>
+                                              <label class="radio-inline">
+                                                  <input type="radio" name="product_color" value="green"> green
+                                              </label>
+                                          </div>
+                                          <div class="form-group2">
+                                              <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                          </div>
+                                          <strong class="price pull-left">${{product.PriceDollars}}</strong>                                          
+                                          <input name="product_price" value="{{product.PriceDollars}}" type="hidden" />
+                                          <input name="product_id" value="{{product.ProductId}}" type="hidden" />
+                                          <input name="product_asin" value="{{product.ProductAsin}}" type="hidden" />
+                                          <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>            
+        </div>        
+        <aside class="col-md-4">
+            <form id="purchaseForm" action="{{site.data.cloudstitch.api_endpoint}}/Orders" method="POST"> 
+                <div id="smartcart"></div>
+            </form>
+            
+        </aside>
     </div>
-  </div>
-  <div class="Card">
-    <div class="Card__content">
-      <div class="Card__image" style="background-image: url('https://images-na.ssl-images-amazon.com/images/I/61wLvJSV22L.jpg');"></div>
-      <div class="Card__info">
-        <h2 class="Card__title">American Gods: The Official Coloring Book</h2>
-        <h3 class="Card__price">$6.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="Card">
-    <div class="Card__content">
-      <div class="Card__image" style="background-image: url('https://images-na.ssl-images-amazon.com/images/I/51fi0y-jJeL.jpg');"></div>
-      <div class="Card__info">
-        <h2 class="Card__title">KINREX Pink Wig - Bob Wig - Short & Medium Synthetic Wig - Costume Wig</h2>
-        <h3 class="Card__price">$9.99</h3>
-      </div>
-    </div>
-  </div>
-</div>
+</section> -->

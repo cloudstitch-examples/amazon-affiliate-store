@@ -9,7 +9,11 @@
 @import "base/base";
 @import "base/typography";
 @import "base/colors";
+@import "base/utilities";
 
+@import "components/button";
 @import "components/navbar";
 @import "components/gallery";
 @import "components/card";
+@import "components/cart";
+@import "components/product";
