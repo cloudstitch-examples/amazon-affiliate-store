@@ -3,15 +3,33 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+    var drawerOpen = false;
+    var cartOpen = false;
+
     $('#smartcart').smartCart({
       submitSettings: {
         submitType: 'awslist'
       }
     });
 
+    $('#toggleDrawer').click(function(e) {
+      e.preventDefault();
+      if (cartOpen) {
+        toggleCart();
+        window.setTimeout(toggleDrawer, 150);
+      } else {
+        toggleDrawer();
+      }
+    })
+
     $('#toggleCart').click(function(e) {
       e.preventDefault();
-      toggleCart();
+      if (drawerOpen) {
+        toggleDrawer();
+        window.setTimeout(toggleCart, 150);
+      } else {
+        toggleCart();
+      }
     });
 
     $('.Cart').click(function(e) {
@@ -20,12 +38,30 @@
       }
     });
 
-    function toggleCart() {
+    function toggleDrawer() {
+      drawerOpen = !drawerOpen;
       $('body').toggleClass('u-noscroll');
-      $('#toggleCart').blur().children().each(function() {
+      $('#toggleDrawer').blur().children().each(function() {
         $(this).toggleClass('u-hidden');
-      })
+      });
+      $('.Drawer').toggleClass('Drawer--open');
+    }
+
+    function toggleCart() {
+      cartOpen = !cartOpen;
+      $('body').toggleClass('u-noscroll');
+      $('#toggleCart').blur().children('img').each(function() {
+        $(this).toggleClass('u-hidden');
+      });
       $('.Cart').toggleClass('Cart--open');
+      if ($('.Cart').hasClass('Cart--open')) {
+        $('.Navbar__count').addClass('u-hidden');
+      } else {
+        var count = $('.Navbar__count');
+        if (count.text() !== '0') {
+          $('.Navbar__count').removeClass('u-hidden');
+        }
+      }
     }
   });
 </script>

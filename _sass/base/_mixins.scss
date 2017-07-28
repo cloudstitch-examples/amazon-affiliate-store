@@ -36,6 +36,19 @@
   flex-direction: column;
 }
 
+@mixin flex-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; 
+}
+
+@mixin order-last {
+  -webkit-box-ordinal-group: 100000;
+  -ms-flex-order: 99999;
+  order: 99999;
+}
+
 @mixin grid($gutter: 4) {
   @include flex;
   margin: -(m($gutter - 1));
@@ -83,5 +96,25 @@
     background-color: darken($color, 20%);
     box-shadow: p(1) p(2) p(3) rgba($shadow-color, $shadow-opacity-hover);
     transform: translateY(-(p(1)));
+  }
+}
+
+@mixin break($point) {
+  @if $point == "sm" {
+    @media screen and (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $point == "ns" {
+    @media screen and (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $point == "md" {
+    @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $point == "lg" {
+    @media screen and (min-width: $breakpoint-lg)  {
+      @content;
+    }
   }
 }

@@ -1,15 +1,25 @@
 .Navbar {
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   @include flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: h(3);
-  padding: 0 p(5);
+  padding: 0 p(4);
   background-color: $nav-color;
   @include shadow;
+
+  @include break("lg") {
+    padding: 0 p(5);
+  }
+}
+
+.Navbar__toggle {
+  @include break("ns") {
+    display: none;
+  }
 }
 
 .Navbar__brand {
@@ -34,12 +44,38 @@
 .Navbar__item {
   font-weight: $fw-semibold;
 
-  &:not(:first-child) {
-    margin-left: m(4);
+  &:not(:last-child) {
+    display: none;
+    margin-right: m(4);
+
+    @include break("ns") {
+      display: block;
+    }
   }
   
   > a {
+    position: relative;
+    color: $primary-text-color;
     @include flex;
     @include dim;
   }
+}
+
+.Navbar__count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  @include flex;
+  justify-content: center;
+  align-items: center;
+  width: w(1) + p(1);
+  height: h(1) + p(1);
+  margin-top: -(m(2));
+  margin-right: -(m(2));
+  font-size: fs(1);
+  font-weight: $fw-bolder;
+  line-height: 0;
+  color: $inverted-text-color;
+  background-color: $brand-color;
+  border-radius: $br-circle;
 }

@@ -1,5 +1,17 @@
 .u-hidden {
-  display: none;
+  display: none !important;
+}
+
+.u-hidden-sm {
+  @include break("sm") {
+    display: none !important;
+  }
+}
+
+.u-hidden-ns {
+  @include break("ns") {
+    display: none !important;
+  }
 }
 
 .u-noscroll {

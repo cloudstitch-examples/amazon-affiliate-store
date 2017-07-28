@@ -3,7 +3,11 @@ html {
 }
 
 main {
-  padding: p(5);
+  padding: p(5) p(4) p(4);
+
+  @include break("lg") {
+    padding: p(5);
+  }
 }
 
 *,

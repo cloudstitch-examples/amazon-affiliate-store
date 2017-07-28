@@ -1,3 +1,5 @@
+---
+---
 /*!
  * jQuery Smart Cart v3.0.1
  * The smart interactive jQuery Shopping Cart plugin with PayPal payment support
@@ -85,7 +87,7 @@
                     for (var i = 0; i < cart.length; i++) {
                         var item = cart[i];
                         this.options.cart.push(item);
-                        $('[value="' + item.product_asin + '"]').parent().addClass('sc-added-item').attr('data-product-unique-key', p.unique_key);
+                        $('[value="' + item.product_asin + '"]').parent().addClass('sc-added-item').attr('data-product-unique-key', item.unique_key);
                     }
                 } catch(ex) {
                     console.log(ex);
@@ -139,7 +141,7 @@
             if(this.options.toolbarSettings.showToolbar !== true) { return false; }
             
             var toolbar = $('<div></div>').addClass('Cart__footer sc-toolbar');
-            var toolbarButtonPanel = $('<div class="sc-cart-toolbar">');
+            var toolbarButtonPanel = $('<div class="Cart__toolbar sc-cart-toolbar">');
             var toolbarSummaryPanel = $('<div class="sc-cart-summary">');
             
             // Checkout Button
@@ -190,7 +192,6 @@
             $(this.options.addCartSelector).on( "click", function(e) {
                 e.preventDefault();
                 var p = mi._getProductDetails($(this));
-                console.log('add', p);
                 p = mi._addToCart(p);
                 $(this).parents(mi.options.productContainerSelector).addClass('sc-added-item').attr('data-product-unique-key', p.unique_key);
                 $(this).blur();
@@ -214,14 +215,14 @@
             
             // Cart checkout event
             $(this.cart_element).on( "click", '.sc-cart-checkout', function(e) {
-                if($(this).hasClass('disabled')) { return false; }
+                if($(this).prop('disabled')) { return false; }
                 e.preventDefault();
                 mi._submitCart();
             });
             
             // Cart clear event
             $(this.cart_element).on( "click", '.sc-cart-clear', function(e) {
-                if($(this).hasClass('disabled')) { return false; }
+                if($(this).prop('disabled')) { return false; }
                 e.preventDefault();
                 $('.sc-cart-item-list > .sc-cart-item', this.cart_element).fadeOut( "normal", function() {
                     $(this).remove();
@@ -248,7 +249,6 @@
                         }
                     }
                 });
-            console.log(p);
             return p;
         },
         /* 
@@ -308,7 +308,7 @@
                     mi._hasCartChange();
                     
                     // Trigger "itemRemoved" event
-                    this._triggerEvent("itemRemoved", [itemRemove]);
+                    mi._triggerEvent("itemRemoved", [itemRemove]);
                     return false;
                 }
             });
@@ -365,8 +365,8 @@
                 
                 var itemSummary = '<div class="sc-cart-item-summary"><span class="sc-cart-item-price">' + this._getMoneyFormatted(p[this.options.paramSettings.productPrice]) + '</span>';
                 itemSummary += ' × <input type="number" min="1" max="1000" class="sc-cart-item-qty" value="' + this._getValueOrEmpty(p[this.options.paramSettings.productQuantity]) + '" />';
-                itemSummary += ' = <span class="sc-cart-item-amount">' + this._getMoneyFormatted(productAmount) + '</span>';
-                itemSummary += '<a class="Product__remove sc-cart-remove">' + this.options.lang.cartRemove + '</a></div>';
+                // itemSummary += ' = <span class="sc-cart-item-amount">' + this._getMoneyFormatted(productAmount) + '</span>';
+                itemSummary += '<a class="Product__remove sc-cart-remove"><span class="u-hidden-sm">' + this.options.lang.cartRemove + '</span><span class="u-hidden-ns">×</span></a></div>';
                 
                 elmMain.append(itemSummary);
                 cartList.append(elmMain);
@@ -389,19 +389,23 @@
             if (!(saveCart === false)) {
                 this._saveCart();
             }
-            $('.sc-cart-count',this.cart_element).text(this.cart.length);
+            $('.sc-cart-count').text(this.cart.length);
             $('.sc-cart-subtotal',this.element).text(this._getCartSubtotal());
             
             if(this.cart.length === 0){
+                console.log('cart empty');
+                $('.sc-cart-count').first().addClass('u-hidden');
                 $('.sc-cart-item-list',this.cart_element).empty().append($('<h2 class="Cart__empty sc-cart-empty-msg">' + this.options.lang.cartEmpty + '</h2>'));
                 $(this.options.productContainerSelector).removeClass('sc-added-item');
-                $('.sc-cart-checkout, .sc-cart-clear').addClass('disabled');
+                $('.sc-cart-checkout, .sc-cart-clear').prop('disabled', true);
                 
                 // Trigger "cartEmpty" event
                 this._triggerEvent("cartEmpty");
             }else{
+                console.log('cart not empty');
+                $('.sc-cart-count').first().removeClass('u-hidden');
                 $('.sc-cart-item-list > .sc-cart-empty-msg',this.cart_element).remove();
-                $('.sc-cart-checkout, .sc-cart-clear').removeClass('disabled');
+                $('.sc-cart-checkout, .sc-cart-clear').prop('disabled', false);
             }
             
             // Update cart value to the  cart hidden element 
@@ -496,7 +500,7 @@
 
                     // Build affiliate link
                     var url = "http://www.amazon.com/gp/aws/cart/add.html"
-                    url += "?AssociateTag=your-tag";
+                    url += "?AssociateTag={{site.amazon_tag}}";
 
                     $.each(this.cart, function( i, p ) {   
                         var itemNumber = i + 1;

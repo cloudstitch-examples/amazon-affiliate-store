@@ -1,10 +1,14 @@
-/* Cards + Grid */
+// Cards + Grid
 
 $card-type: "color"; // basic, color
 $grid-cols: 12;
-$num-cols: 4;
+$cols-sm: 1;
+$cols-md: 2;
+$cols-lg: 4;
+$breakpoint-md: 48em;
+$breakpoint-lg: 64em;
 
-/* Typography */
+// Typography
 
 $system-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto",
               "Helvetica Neue", Helvetica, Arial, sans-serif,
@@ -20,12 +24,12 @@ $fw-bolder: 700;
 $lh-title: 1.25;
 $lh-copy: 1.5;
 
-/* Sizing + Spacing */
+// Sizing + Spacing
 
 $sizing-scale: 1rem, 2rem, 4rem, 8rem, 16rem;
 $spacing-scale: .25rem, .5rem, 1rem, 2rem, 4rem, 8rem, 16rem;
 
-/* Colors */
+// Colors
 
 $white: rgb(255,255,255);
 $near-white: rgb(244,244,244);
@@ -53,24 +57,26 @@ $brand-color: $green;
 $card-color: $white;
 $card-colors: $green, $purple, $teal, $pink, $red, $blue, $yellow, $orange;
 $modal-color: $black;
+$inverted-modal-color: $white;
 $cart-color: $white;
 
-/* Shadows + Opacity */
+// Shadows + Opacity
 
 $shadow-color: $mid-gray;
 $shadow-opacity: .075;
 $shadow-opacity-hover: .15;
 
 $opacity-hover: .5;
+$opacity-disabled: .5;
 $opacity-overlay: .75;
 
-/* Borders */
+// Borders
 
 $border-color: rgba($black, .1);
 
 $br-rounded: .5rem;
 $br-circle: 100%;
 
-/* Transitions */
+// Transitions
 
 $transition-duration: 150ms;

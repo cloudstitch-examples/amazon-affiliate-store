@@ -5,16 +5,34 @@
   cursor: pointer;
 }
 
+.Button:disabled {
+  cursor: default;
+}
+
 .Button:not(.Button--link) {
   font-weight: $fw-semibold;
   color: $inverted-text-color;
   background-color: $brand-color;
   @include shadow;
+}
+
+.Button:not(.Button--link):enabled {
   @include darken($brand-color);
+}
+
+.Button:not(.Button--link):disabled {
+  opacity: $opacity-disabled;
 }
 
 .Button--link {
   color: $brand-color;
-  background-color: $nav-color;
+  background-color: transparent;
+}
+
+.Button--link:enabled {
   @include dim;
+}
+
+.Button--link:disabled {
+  opacity: $opacity-disabled;
 }

@@ -1,6 +1,14 @@
 .Card {
   @include flex;
-  @include col(12 / $num-cols);
+  @include col(12 / $cols-sm);
+
+  @include break("md") {
+    @include col(12 / $cols-md);
+  }
+
+  @include break("lg") {
+    @include col(12 / $cols-lg);
+  }
 
   &::before {
     content: "";

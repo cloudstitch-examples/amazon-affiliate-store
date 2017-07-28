@@ -1,0 +1,47 @@
+.Drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  padding-top: p(5);
+  background-color: rgba($inverted-modal-color, .99);
+  opacity: 0;
+  transition: opacity $transition-duration ease-in;
+  pointer-events: none;
+
+  &--open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+.Drawer__menu {
+  @include flex;
+  @include flex-column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.Drawer__item {
+  font-size: fs(4);
+  text-align: center;
+  border-bottom: 1px solid $border-color;
+
+  > a {
+    display: block;
+    padding: p(3) 0;
+    font-weight: $fw-semibold;
+    color: $primary-text-color;
+    transition: color $transition-duration ease-in,
+                background-color $transition-duration ease-in;
+
+    &:hover,
+    &:focus {
+      color: $brand-color;
+      background-color: rgba($brand-color, .02);
+    }
+  }
+}
