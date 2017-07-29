@@ -12,3 +12,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - lib
+collections:
+  pages:
+    output: true
