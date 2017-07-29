@@ -1,11 +1,8 @@
 # Site settings
 title: Amazon Affiliate Store
-description: >
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "/amazon-affiliate-store"
-url: "https://cloudstitch-examples.github.io"
+description: Amazon results from /r/shutupandtakemymoney, presented as an online store page.
+baseurl: /amazon-affiliate-store
+url: https://cloudstitch-examples.github.io
 amazon_tag: YOUR_TAG_HERE
 subreddit: shutupandtakemymoney
 
