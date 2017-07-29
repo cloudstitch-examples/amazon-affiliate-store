@@ -27,6 +27,8 @@
   align-items: center;
   margin-bottom: 0;
   font-size: fs(3);
+  font-weight: $fw-bold;
+  @include dim;
 }
 
 .Navbar__logo {
