@@ -2,7 +2,14 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  @include flex;
+  @include flex-column;
+  min-height: 100vh;
+}
+
 main {
+  flex: 1;
   padding: p(5) p(4) p(4);
 
   @include break("lg") {
