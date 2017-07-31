@@ -32,11 +32,14 @@
 }
 
 .Navbar__logo {
-  margin-right: m(3);
   -webkit-animation: spin-interval 5s infinite;
   -moz-animation: spin-interval 5s infinite;
   -o-animation: spin-interval 5s infinite;
   animation: spin-interval 5s infinite;
+
+  @include break("ns") {
+    margin-right: m(3);
+  }
 }
 
 .Navbar__brand:hover .Navbar__logo,
