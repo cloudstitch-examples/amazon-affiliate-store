@@ -15,3 +15,7 @@
 .Page li {
   margin-bottom: m(2);
 }
+
+.Page a {
+  @include dim;
+}
