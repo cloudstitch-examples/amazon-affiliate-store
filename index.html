@@ -6,7 +6,7 @@ layout: default
   {% for product in site.data.Products.RedditScrape %}
     <div class="Card sc-product-item">
       <input class="sc-cart-item-qty" name="product_quantity" value="1" type="hidden" />
-      <input name="product_price" value="{{product.AmazonPrice}}" type="hidden" />
+      <input name="product_price" value="{{product.AmazonPrice | remove_first: '$'}}" type="hidden" />
       <input name="product_id" value="{{forloop.index}}" type="hidden" />
       <input name="product_asin" value="{{product.ASIN}}" type="hidden" />
 
