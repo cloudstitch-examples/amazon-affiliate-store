@@ -393,7 +393,6 @@
             $('.sc-cart-subtotal',this.element).text(this._getCartSubtotal());
             
             if(this.cart.length === 0){
-                console.log('cart empty');
                 $('.sc-cart-count').first().addClass('u-hidden');
                 $('.sc-cart-item-list',this.cart_element).empty().append($('<h2 class="Cart__empty sc-cart-empty-msg">' + this.options.lang.cartEmpty + '</h2>'));
                 $(this.options.productContainerSelector).removeClass('sc-added-item');
@@ -402,8 +401,9 @@
                 // Trigger "cartEmpty" event
                 this._triggerEvent("cartEmpty");
             }else{
-                console.log('cart not empty');
-                $('.sc-cart-count').first().removeClass('u-hidden');
+                if (!$('.Cart').hasClass('Cart--open')) {
+                  $('.sc-cart-count').first().removeClass('u-hidden');
+                }
                 $('.sc-cart-item-list > .sc-cart-empty-msg',this.cart_element).remove();
                 $('.sc-cart-checkout, .sc-cart-clear').prop('disabled', false);
             }

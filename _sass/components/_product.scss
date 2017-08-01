@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: h(3);
 
   &:not(:first-child) {
     margin-top: m(3);
