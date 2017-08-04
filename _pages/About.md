@@ -8,3 +8,5 @@ This [Cloudstitch](https://cloudstitch.com/) template uses a Google App Script t
 1.  Select the products you would like to buy
 2.  Open the shopping cart and use the “Checkout” button
 3.  You’ll be taken to Amazon.com to confirm your purchase
+
+Since this is just a demo, we haven’t actually put in our affiliate ID. Instead, checking out will take you to the AmazonSmile subdomain, which supports charity.
