@@ -1,10 +1,10 @@
 # Site settings
 title: Amazon Affiliate Store
-description: Amazon results from /r/FidgetSpinners, presented as an online store page.
+description: Amazon results from /r/AmazonUnder25, presented as an online store page.
 baseurl: /amazon-affiliate-store
 url: https://cloudstitch-examples.github.io
 amazon_tag: YOUR_TAG_HERE
-subreddit: FidgetSpinners
+subreddit: AmazonUnder25
 
 # Build settings
 markdown: kramdown

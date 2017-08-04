@@ -4,24 +4,27 @@ layout: default
 
 <section class="Gallery">
   {% for product in site.data.Products.RedditScrape %}
-    <div class="Card sc-product-item">
-      <input class="sc-cart-item-qty" name="product_quantity" value="1" type="hidden" />
-      <input name="product_price" value="{{product.AmazonPrice | remove_first: '$'}}" type="hidden" />
-      <input name="product_id" value="{{forloop.index}}" type="hidden" />
-      <input name="product_asin" value="{{product.ASIN}}" type="hidden" />
+    {% assign price = product.AmazonPrice | remove_first: '$' | plus: 0 %}
+    {% if price < 25 %}
+      <div class="Card sc-product-item">
+        <input class="sc-cart-item-qty" name="product_quantity" value="1" type="hidden" />
+        <input name="product_price" value="{{price}}" type="hidden" />
+        <input name="product_id" value="{{forloop.index}}" type="hidden" />
+        <input name="product_asin" value="{{product.ASIN}}" type="hidden" />
 
-      <a class="Card__content sc-add-to-cart" href="#">
-        <div class="Card__image" name="product_image" style="background-image: url('{{product.AmazonImage}}');"></div>
-        <div class="Card__info">
-          <h3 class="Card__title" data-name="product_name">{{product.AmazonTitle | truncate: 100}}</h3>
-          <h3 class="Card__detail">
-            {{product.AmazonPrice}}
-            <span class="Card__label">Add to cart</span>
-            <span class="Card__added"><img src="https://icon.now.sh/check/24/ffffff"></span>
-          </h3>
-        </div>
-      </a>
-    </div>
+        <a class="Card__content sc-add-to-cart" href="#">
+          <div class="Card__image" name="product_image" style="background-image: url('{{product.AmazonImage}}');"></div>
+          <div class="Card__info">
+            <h3 class="Card__title" data-name="product_name">{{product.AmazonTitle | truncate: 100}}</h3>
+            <h3 class="Card__detail">
+              {{product.AmazonPrice}}
+              <span class="Card__label">Add to cart</span>
+              <span class="Card__added"><img src="https://icon.now.sh/check/24/ffffff"></span>
+            </h3>
+          </div>
+        </a>
+      </div>
+    {% endif %}
   {% endfor %}
 </section>
 

@@ -90,6 +90,7 @@
 .Card__title {
   margin-top: -(m(1));
   margin-bottom: m(2);
+  word-break: break-all;
 
   @if ($card-type == "basic") {
     display: inline;

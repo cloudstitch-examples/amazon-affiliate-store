@@ -32,23 +32,24 @@
 }
 
 .Navbar__logo {
-  -webkit-animation: spin-interval 5s infinite;
-  -moz-animation: spin-interval 5s infinite;
-  -o-animation: spin-interval 5s infinite;
-  animation: spin-interval 5s infinite;
-
+  // -webkit-animation: spin-interval 5s infinite;
+  // -moz-animation: spin-interval 5s infinite;
+  // -o-animation: spin-interval 5s infinite;
+  // animation: spin-interval 5s infinite;
+  
   @include break("ns") {
     margin-right: m(3);
+    margin-bottom: -(m(1));
   }
 }
 
-.Navbar__brand:hover .Navbar__logo,
-.Navbar__brand:focus .Navbar_logo {
-  -webkit-animation: spin-continuous .75s infinite linear;
-  -moz-animation: spin-continuous .75s infinite linear;
-  -o-animation: spin-continuous .75s infinite linear;
-  animation: spin-continuous .75s infinite linear;
-}
+// .Navbar__brand:hover .Navbar__logo,
+// .Navbar__brand:focus .Navbar_logo {
+//   -webkit-animation: spin-continuous .75s infinite linear;
+//   -moz-animation: spin-continuous .75s infinite linear;
+//   -o-animation: spin-continuous .75s infinite linear;
+//   animation: spin-continuous .75s infinite linear;
+// }
 
 .Navbar__menu {
   @include flex;
