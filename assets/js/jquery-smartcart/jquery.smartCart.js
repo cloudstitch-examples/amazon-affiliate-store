@@ -499,7 +499,11 @@
                     var stripeDescription = '';
 
                     // Build affiliate link
-                    var url = "http://smile.amazon.com/gp/aws/cart/add.html"
+                    {% if site.amazon_tag == 'YOUR_TAG_HERE' %}
+                    var url = "http://smile.amazon.com/gp/aws/cart/add.html";
+                    {% else %}
+                    var url = "http://www.amazon.com/gp/aws/cart/add.html";
+                    {% endif %}
                     url += "?AssociateTag={{site.amazon_tag}}";
 
                     $.each(this.cart, function( i, p ) {   
